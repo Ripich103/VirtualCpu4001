@@ -1,0 +1,16 @@
+mov_r0
+1
+jm
+14
+add
+store
+13
+print
+13
+halt
+nop
+nop
+mov_r1
+2
+jm
+6

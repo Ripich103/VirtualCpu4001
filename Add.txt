@@ -1,0 +1,11 @@
+mov_r0
+1
+mov_r1
+2
+add
+store
+13
+print
+13
+beep
+halt
