@@ -26,6 +26,7 @@ namespace CPU_4001
 		bool m_OverflowFlag;
 		bool m_UnderflowFlag;
 		bool m_SigningFlag;
+		byte m_PrintFlag; // true =  char / false =  int
 		bool m_Halt;
 
 		Memory* m_Memory;
@@ -62,6 +63,12 @@ namespace CPU_4001
 
 		void ErrorHandling();
 
+		void SetPrintFlagToChar();
+
+		void SetPrintFlagToInt();
+
+		
+
 	public:
 		CPU(Memory* p_Memory);
 
@@ -75,6 +82,7 @@ namespace CPU_4001
 		
 		void Run();
 
+		
 	};
 }
 

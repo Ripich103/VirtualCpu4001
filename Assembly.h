@@ -19,6 +19,8 @@ namespace Asm
 	constexpr CPU_4001::byte JM =		0x0C;
 	constexpr CPU_4001::byte JE =		0x0D;
 	constexpr CPU_4001::byte JNE =		0x0E;
+	constexpr CPU_4001::byte PFC =		0x0F;
+	constexpr CPU_4001::byte PFI =		0x10;
 	constexpr CPU_4001::byte HALT =		0x00;
 	constexpr CPU_4001::byte NOP =		0x00; // for readability.
 }

@@ -64,6 +64,14 @@ namespace DC
         {
             value = Asm::HALT;
         }
+        else if (option == "PFC" || option == "pfc")
+        {
+            value = Asm::PFC;
+        }
+        else if (option == "PFI" || option == "pfi")
+        {
+            value = Asm::PFI;
+        }
         else if (option == "NOP" || option == "nop")
         {
             value = Asm::NOP;
