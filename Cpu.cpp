@@ -27,73 +27,91 @@ namespace CPU_4001
 
 		switch (p_Opcode)
 		{
-		//EXIT PROGRAM
+			//EXIT PROGRAM
 		case 0:
 			Halt();
 			break;
-		//LOAD reg0
+			//LOAD reg0
 		case 1:
 			m_Register0 = m_Memory->Read(m_ProgramCounter);
 			++m_ProgramCounter;
 			break;
-		//LOAD reg1
+			//LOAD reg1
 		case 2:
 			m_Register1 = m_Memory->Read(m_ProgramCounter);
 			++m_ProgramCounter;
 			break;
-		//ADD reg0 TO reg1
+			//ADD reg0 TO reg1
 		case 3:
 			Add();
 			break;
-		// Substract reg0 and reg1, save result in reg0
+			// Substract reg0 and reg1, save result in reg0
 		case 4:
 			Sub();
 			break;
-		// Multiply reg0 and reg1, save result in reg0
+			// Multiply reg0 and reg1, save result in reg0
 		case 5:
 			Mul();
 			break;
-		// Divide reg0 and reg1, save result in reg0
+			// Divide reg0 and reg1, save result in reg0
 		case 6:
 			Div();
 			break;
-		//BEEP
+			//BEEP
 		case 7:
 			Beep();
 			break;
-		//STORE reg0 AT MEMORY ADDRESS
+			//STORE reg0 AT MEMORY ADDRESS
 		case 8:
 			Store();
 			break;
-		//PRINT reg0
+			//PRINT reg0
 		case 9:
 			Print();
 			break;
 		case 10:
-		//SET reg0 TO zero xd!
+			//SET reg0 TO zero xd!
 			ResetReg0();
 			break;
 		case 11:
-		//SET reg1 TO zero.
+			//SET reg1 TO zero.
 			ResetReg1();
 			break;
 		case 12:
-		//JUMP to specified memory address
+			//JUMP to specified memory address
 			JumpTo();
 			break;
 		case 13:
-		//JUMP IF EQUAL to specified memory address
+			//JUMP IF EQUAL to specified memory address
 			JumpIfEqu();
 			break;
 		case 14:
-		//JUMP IF NOT EQUAL to specified memory address
+			//JUMP IF NOT EQUAL to specified memory address
 			JumpNEqu();
+			break;
+			//print byte as a char
+		case 15:
+			SetPrintFlagToChar();
+			break;
+		case 16:
+			// print byte as a int
+			SetPrintFlagToInt();
 			break;
 		//UNKNOWN OPCODE
 		default:
 			std::cerr << "Unknown opcode: " << (int)p_Opcode << std::endl;
 			Halt();
 		}
+	}
+
+	void CPU::SetPrintFlagToChar()
+	{
+		m_PrintFlag = true;
+	}
+
+	void CPU::SetPrintFlagToInt()
+	{
+		m_PrintFlag = false;
 	}
 
 	void CPU::ResetReg0()
@@ -223,7 +241,14 @@ namespace CPU_4001
 
 		m_Register0 = m_Memory->Read(m_Register1);
 
-		std::cout << (int)m_Register0 << std::endl;
+		if (m_PrintFlag == false) // int
+		{
+			std::cout << (int)m_Register0 << std::endl;
+		}
+		else
+		{
+			std::cout << (char)m_Register0 << std::endl;
+		}
 		
 	}
 
@@ -287,6 +312,7 @@ namespace CPU_4001
 		m_UnderflowFlag(false),
 		m_SigningFlag(false),
 		m_Halt(false),
+		m_PrintFlag(false),
 
 		m_Memory(p_Memory)
 	{
