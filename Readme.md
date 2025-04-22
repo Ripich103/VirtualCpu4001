@@ -54,6 +54,10 @@ PFC  ; sets print flag to char eg std::cout << static_cast<char>(97); = a
 PFI ; sets print flag to int also its default on start
 --
 
+how to run
+1.you can compile it and run it as an executable file.
+2. you can run an exe file virtualcpu4001.exe or virtualcpu4001v3.exe they are indentical.
+
 Very basic program in Add.txt.
 
 Also it starts from second memory address cuz cpu reserves 1 byte for jump address and the other one for extra halt!
