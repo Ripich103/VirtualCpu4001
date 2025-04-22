@@ -13,8 +13,9 @@ in main.cpp you can run it and edit memory then load it to cpu.
 
 Feel free to use it or upgrade it :)
 
---
 Here is the list of instructions:
+
+--
 
 MOV_R0 ;moves val to r0 
 
