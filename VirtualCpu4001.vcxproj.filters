@@ -43,11 +43,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TODO.txt">
-      <Filter>Исходные файлы</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Decoder.cppp" />
   </ItemGroup>
 </Project>

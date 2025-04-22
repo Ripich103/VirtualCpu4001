@@ -10,7 +10,7 @@ namespace CPU_4001
 
 	Memory::~Memory()
 	{
-		if (c_MemorySpace != nullptr)
+		if (c_MemorySpace != nullptr) // if it wasn`t already deleted!
 		{
 			delete[] c_MemorySpace;
 			c_MemorySpace = nullptr;

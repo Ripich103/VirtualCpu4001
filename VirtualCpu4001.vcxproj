@@ -139,9 +139,6 @@
     <ClCompile Include="Memory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TODO.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Decoder.cppp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

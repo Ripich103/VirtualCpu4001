@@ -4,7 +4,6 @@
 #include "CPU.h"
 #include "Assembly.h"
 
-using namespace std;
 using namespace Asm;
 using namespace CPU_4001;
 
@@ -29,9 +28,9 @@ bool read = false;
 
 int main()
 {
-    cout << "Init Memory...";
+    std::cout << "Init Memory...";
     Memory* theMemory = new Memory();
-    cout << "Ready" << endl;
+    std::cout << "Ready" << std::endl;
 
     // Changes here: We have the CPU ONLY active
     // for the cycle from the menu through, however
@@ -46,7 +45,7 @@ int main()
         // character (plus enter) for
         // the next option to perform
         ShowMenu();
-        cin >> selectedOption;
+        std::cin >> selectedOption;
 
         // Check if we're exiting
         if (!IsExitOption(selectedOption))
@@ -54,7 +53,7 @@ int main()
             // Check if we're running
             if (ChooseFromMenu(selectedOption, theMemory))
             {
-                cout << "\n************************************" << endl;
+                std::cout << "\n************************************" << std::endl;
                 // Create the CPU    
                 CPU* theCPU = new CPU(theMemory);
 
@@ -87,7 +86,7 @@ int main()
 
                 // The CPU is done
                 delete theCPU;
-                cout << "************************************" << endl;
+                std::cout << "\n************************************\n";
             }
         }
         else
@@ -101,18 +100,18 @@ int main()
 
 void ShowMenu()
 {
-    cout << endl << "===== Menu =====" << endl;
-    cout << "1. Load Default Program" << endl;
-    cout << "2. Clear the Memory" << endl;
-    cout << "3. Report Memory" << endl;
-    cout << "4. Save to file" << endl;
-    cout << "5. Import from file" << endl;
-    cout << "R. Run the current memory state through the CPU" << endl;
-    cout << "E. Enter programe editor" << endl;
-    cout << endl;
-    cout << "X. Exit Interpter" << endl;
-    cout << endl;
-    cout << "Selection: ";
+    std::cout << std::endl << "===== Menu =====" << std::endl;
+    std::cout << "1. Load Default Program" << std::endl;
+    std::cout << "2. Clear the Memory" << std::endl;
+    std::cout << "3. Report Memory" << std::endl;
+    std::cout << "4. Save to file" << std::endl;
+    std::cout << "5. Import from file" << std::endl;
+    std::cout << "R. Run the current memory state through the CPU" << std::endl;
+    std::cout << "E. Enter programe editor" << std::endl;
+    std::cout << std::endl;
+    std::cout << "X. Exit Interpter" << std::endl;
+    std::cout << std::endl;
+    std::cout << "Selection: ";
 }
 
 
@@ -173,7 +172,7 @@ void ProgramEntry(Memory* theMemory)
 
     bool exitEditor = false;
     byte value = 0;
-    string option;
+    std::string option;
     option.reserve(255);
     byte currentAddress = 2; // we reserve 2 addresses in out cpu for jump address and extra halt.
     do
@@ -210,9 +209,9 @@ void ClearMemory(Memory* theMemory)
 {
     if (theMemory != nullptr)
     {
-        cout << "\nClearing the memory...";
+        std::cout << "\nClearing the memory...";
         theMemory->Clear();
-        cout << "Complete" << endl;
+        std::cout << "Complete" << std::endl;
     }
 }
 
@@ -223,7 +222,7 @@ void DefaultProgram(Memory* theMemory)
         ClearMemory(theMemory);
         
         // Add the program
-        cout << "\n\nAdding our default machine code program..." << endl;
+        std::cout << "\n\nAdding our default machine code program..." << std::endl;
         // Load0 value 1
         theMemory->Write(2, MOV_R0);
         theMemory->Write(3, 1);
@@ -253,22 +252,21 @@ void DefaultProgram(Memory* theMemory)
 
 void ReportMemory(Memory* theMemory)
 {
-    // Now, we only need to add "(int)" here, because the cout
+    // Now, we only need to cast it to int here, because the cout
     // stream does not know to use our "byte" as a number, the
     // C++ language would just assume that our memory spot is
     // an "unsigned char"... or character, so we'd output garbage.
-    // (int) in front simply means "Treat this as a number"...
-    cout << "\nMemory Size: " << (int)theMemory->c_MaxAddress << endl;
-
-    cout << "\nDo you want to list the memory?";
+    // static_cast<int>(x) simply means "Treat x as a number"...
+    std::cout << "\nMemory Size: " << static_cast<int>(theMemory->c_MaxAddress) << std::endl;
+    std::cout << "\nDo you want to list the memory?";
     char yesNo;
-    cin >> yesNo;
+    std::cin >> yesNo;
     if (yesNo == 'Y' || yesNo == 'y')
     {
         for (byte currentAddress = 0; currentAddress < theMemory->c_MaxAddress; ++currentAddress)
         {
             // Again, add "(int)" to force usage as a number
-            cout << "Address [" << (int)currentAddress << "] = " << (int)theMemory->Read(currentAddress) << "\n";
+            std::cout << "Address [" << static_cast<int>(currentAddress) << "] = " << static_cast<int>(theMemory->Read(currentAddress)) << "\n";
         }
     }
 }
@@ -280,6 +278,5 @@ bool ReadFile(CPU* cpu)
 
 bool WriteFile(CPU* cpu)
 {
-    
     return true;
 }

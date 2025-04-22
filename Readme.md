@@ -5,7 +5,7 @@ It can multiply, add, substract, divide two numbers.
 
 It can print from reg0. Beep and it can write or read from/to file.
 
-It has its own pseudo asm(basicaly binary code).
+It has its own basic binary code eg opcodes.
 
 Also it has checks for overflow and underflow(very basic).
 
@@ -13,10 +13,11 @@ in main.cpp you can run it and edit memory then load it to cpu.
 
 Feel free to use it or upgrade it :)
 
-------------------------------------------------------------------------
 Here is the list of instructions:
 
-MOV_R0 ;moves val to r0
+--
+
+MOV_R0 ;moves val to r0 
 
 MOV_R1 ;moves val to r1
 
@@ -47,7 +48,11 @@ CLEAR_R1 ; sets r1 to 0
 HALT ; end of the program
 
 NOP ; for readability
-------------------------------------------------------------------------
+
+PFC  ; sets print flag to char eg std::cout << static_cast<char>(97); = a
+
+PFI ; sets print flag to int also its default on start
+--
 
 Very basic program in Add.txt.
 
@@ -73,7 +78,4 @@ press enter
 type filename to make
 press enter
 boom magic
-
-TODO: 
-Add a printing func to symbols.
 
