@@ -15,7 +15,7 @@ namespace CPU_4001
 		return l_opCode;
 	}
 
-	void CPU::Halt()
+	inline void CPU::Halt()
 	{
 		m_Halt = true;
 	}
@@ -104,17 +104,17 @@ namespace CPU_4001
 		}
 	}
 
-	void CPU::SetPrintFlagToChar()
+	inline void CPU::SetPrintFlagToChar()
 	{
 		m_PrintFlag = true;
 	}
 
-	void CPU::SetPrintFlagToInt()
+	inline void CPU::SetPrintFlagToInt()
 	{
 		m_PrintFlag = false;
 	}
 
-	void CPU::ResetReg0()
+	inline void CPU::ResetReg0()
 	{
 		m_Register0 = 0;
 	}
@@ -181,7 +181,7 @@ namespace CPU_4001
 		return true;
 	}
 
-	void CPU::ResetReg1()
+	inline void CPU::ResetReg1()
 	{
 		m_Register1 = 0;
 	}
@@ -219,7 +219,7 @@ namespace CPU_4001
 		}
 	}
 
-	void CPU::Beep()
+	inline void CPU::Beep() const
 	{
 		std::cout << "\a";
 	}
@@ -243,16 +243,16 @@ namespace CPU_4001
 
 		if (m_PrintFlag == false) // int
 		{
-			std::cout << (int)m_Register0 << std::endl;
+			std::cout << (int)m_Register0;
 		}
 		else
 		{
-			std::cout << (char)m_Register0 << std::endl;
+			std::cout << (char)m_Register0;
 		}
 		
 	}
 
-	void CPU::Add()
+	inline void CPU::Add()
 	{
 		byte oldVal = m_Register0;
 		m_Register0 = m_Register0 + m_Register1;
@@ -262,7 +262,7 @@ namespace CPU_4001
 		}
 	}
 
-	void CPU::Sub()
+	inline void CPU::Sub()
 	{
 		if (m_Register0 >= m_Register1)
 		{
@@ -275,7 +275,7 @@ namespace CPU_4001
 
 	}
 
-	void CPU::Mul()
+	inline void CPU::Mul()
 	{
 		byte oldVal = m_Register0;
 		m_Register0 = m_Register0 * m_Register1;
@@ -286,7 +286,7 @@ namespace CPU_4001
 		}
 	}
 
-	void CPU::Div()
+	inline void CPU::Div()
 	{
 		if (m_Register1 != 0)
 		{
@@ -323,7 +323,7 @@ namespace CPU_4001
 		m_Memory = nullptr;
 	}
 
-	void CPU::Reset()
+	inline void CPU::Reset()
 	{
 		m_Halt = false;
 		m_ProgramCounter = c_BaseAddress;
