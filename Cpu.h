@@ -35,17 +35,17 @@ namespace CPU_4001
 
 		void Decode(const byte& p_Opcode);
 
-		inline void Halt();
-	
-		inline void Add();
-
-		inline void Sub();
-
-		inline void Mul();
-		
-		inline void Div();
-
-		inline void Beep() const;
+	    void Halt();
+	   
+	    void Add();
+	   
+	    void Sub();
+	   
+	    void Mul();
+	   
+	    void Div();
+	   
+	    void Beep() const;
 
 		void Store();
 
@@ -57,15 +57,15 @@ namespace CPU_4001
 
 		void JumpNEqu();
 
-		inline void ResetReg1();
-		
-		inline void ResetReg0();
+	    void ResetReg1();
+	   
+	    void ResetReg0();
 
 		void ErrorHandling();
 
-		inline void SetPrintFlagToChar();
+		void SetPrintFlagToChar();
 
-		inline void SetPrintFlagToInt();
+		void SetPrintFlagToInt();
 
 	public:
 		CPU(Memory* p_Memory);
@@ -76,7 +76,7 @@ namespace CPU_4001
 
 		~CPU();
 
-		inline void Reset();
+		void Reset();
 		
 		void Run();
 

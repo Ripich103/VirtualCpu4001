@@ -28,7 +28,7 @@ bool read = false;
 
 int main()
 {
-    std::cout << "CPU4001 v3.0\nInit Memory...\n";
+    std::cout << "CPU4001 v4.0\nInit Memory...\n";
     Memory* theMemory = new Memory();
     std::cout << "Ready" << std::endl;
 

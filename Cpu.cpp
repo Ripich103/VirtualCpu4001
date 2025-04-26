@@ -15,7 +15,7 @@ namespace CPU_4001
 		return l_opCode;
 	}
 
-	inline void CPU::Halt()
+	void CPU::Halt()
 	{
 		m_Halt = true;
 	}
@@ -104,17 +104,17 @@ namespace CPU_4001
 		}
 	}
 
-	inline void CPU::SetPrintFlagToChar()
+	void CPU::SetPrintFlagToChar()
 	{
 		m_PrintFlag = true;
 	}
 
-	inline void CPU::SetPrintFlagToInt()
+    void CPU::SetPrintFlagToInt()
 	{
 		m_PrintFlag = false;
 	}
 
-	inline void CPU::ResetReg0()
+	void CPU::ResetReg0()
 	{
 		m_Register0 = 0;
 	}
@@ -181,7 +181,7 @@ namespace CPU_4001
 		return true;
 	}
 
-	inline void CPU::ResetReg1()
+	void CPU::ResetReg1()
 	{
 		m_Register1 = 0;
 	}
@@ -252,7 +252,7 @@ namespace CPU_4001
 		
 	}
 
-	inline void CPU::Add()
+	void CPU::Add()
 	{
 		byte oldVal = m_Register0;
 		m_Register0 = m_Register0 + m_Register1;
@@ -262,7 +262,7 @@ namespace CPU_4001
 		}
 	}
 
-	inline void CPU::Sub()
+	void CPU::Sub()
 	{
 		if (m_Register0 >= m_Register1)
 		{
@@ -275,7 +275,7 @@ namespace CPU_4001
 
 	}
 
-	inline void CPU::Mul()
+	void CPU::Mul()
 	{
 		byte oldVal = m_Register0;
 		m_Register0 = m_Register0 * m_Register1;
@@ -286,7 +286,7 @@ namespace CPU_4001
 		}
 	}
 
-	inline void CPU::Div()
+	void CPU::Div()
 	{
 		if (m_Register1 != 0)
 		{
@@ -320,10 +320,11 @@ namespace CPU_4001
 
 	CPU::~CPU()
 	{
+		Reset();
 		m_Memory = nullptr;
 	}
 
-	inline void CPU::Reset()
+	void CPU::Reset()
 	{
 		m_Halt = false;
 		m_ProgramCounter = c_BaseAddress;
