@@ -3,7 +3,7 @@
 namespace CPU_4001
 {
 	
-	const byte& CPU::Fetch()
+	byte CPU::Fetch()
 	{
 		byte l_opCode = 0;
 		l_opCode = m_Memory->Read(m_ProgramCounter);
@@ -20,7 +20,7 @@ namespace CPU_4001
 		m_Halt = true;
 	}
 
-	void CPU::Decode(const byte& p_Opcode)
+	void CPU::Decode(byte p_Opcode)
 	{
 		
 		if (m_Halt) return;

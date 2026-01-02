@@ -1,7 +1,7 @@
 #include <iostream>
 // Made by Ripich103 feel free to copy or use it
 #include "Memory.h"
-#include "CPU.h"
+#include "Cpu.h"
 #include "Assembly.h"
 
 using namespace Asm;

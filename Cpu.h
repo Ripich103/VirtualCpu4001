@@ -31,9 +31,9 @@ namespace CPU_4001
 
 		Memory* m_Memory;
 
-		const byte& Fetch();
+		byte Fetch();
 
-		void Decode(const byte& p_Opcode);
+		void Decode(byte p_Opcode);
 
 	    void Halt();
 	   
